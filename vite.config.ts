@@ -2,6 +2,7 @@ import { dirname, resolve } from "node:path";
 import { defineConfig } from "vite";
 
 export default defineConfig({
+  base: "/my-small-games/",
   build: {
     rolldownOptions: {
       input: {
