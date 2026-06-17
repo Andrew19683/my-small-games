@@ -7,7 +7,9 @@ import {
   renderNewLine,
 } from "./render.ts";
 import type { CheckResult } from "./logic.ts";
+import { io } from "socket.io-client";
 
+const socket = io("http://localhost:3000");
 const answerLength = 4;
 const answer: string = generateAnswer(answerLength);
 const finalAttempt: number = 10;

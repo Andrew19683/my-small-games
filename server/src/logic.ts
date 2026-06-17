@@ -1,10 +1,6 @@
-export interface CheckResult {
-  rightPosition: number;
-  rightMissplaced: number;
-  wrong: number;
-}
+import type { CheckResult } from "./types.js";
 
-export function generateAnswer(len: number): string {
+export function generateCode(len: number): string {
   return Math.floor(Math.random() * 10 ** len)
     .toString()
     .padStart(len, "0");
@@ -28,9 +24,9 @@ export function checkGuess(guess: string, answer: string): CheckResult {
   // теперь соберем неправильные позиции
   let rightMissplaced: number = 0;
   for (let i = 0; i < leftInGuess.length; i++) {
-    if (leftInAnswer.includes(leftInGuess[i])) {
+    if (leftInAnswer.includes(leftInGuess[i]!)) {
       rightMissplaced++;
-      leftInAnswer = leftInAnswer.replace(leftInGuess[i], "");
+      leftInAnswer = leftInAnswer.replace(leftInGuess[i]!, "");
     }
   }
 
